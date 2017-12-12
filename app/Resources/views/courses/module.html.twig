@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    {{ module.name }}
+{% endblock %}
+
+{% block body %}
+    <h2>Liste des formations pour ce module</h2>
+    {#<p><a href="{{ url('courses.form') }}" class="btn btn-info">Ajouter contact</a></p>
+    <br/>
+    {% for value in app.flashes('notice') %}
+        <div class="alert alert-success" role="alert">{{ value }}</div>
+    {% endfor %}#}
+    <div class="list-group">
+        {% for course in module.courses %}
+            <a class="list-group-item" href="{{ url('course', {'slug' : course.slug }) }}">{{ course.name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

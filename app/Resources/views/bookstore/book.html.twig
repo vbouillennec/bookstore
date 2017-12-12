@@ -1,0 +1,40 @@
+{% extends 'base2.html.twig' %}
+
+{% block titre %}
+
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h1>{{ book.titre }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <img class="img-fluid card-img-top" src="{{ asset('img/'~book.image) }}" alt="cover">
+            <div class="card-body">
+                <p>
+                    <strong class="text-uppercase">Auteur : </strong>{{ book.auteur }}
+                </p>
+                <p>
+                    <strong class="text-uppercase">Description : </strong>{{ book.description }}
+                </p>
+                <p>
+                    <strong class="text-uppercase">Catégories : </strong>
+                    {% for category in book.category %}
+                        {{ category.nomCat }}&nbsp;
+                    {% endfor %}
+                </p>
+                <p>
+                    <strong class="text-uppercase">Date de publication : </strong>{{ book.datePublication | date("d/m/Y") }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

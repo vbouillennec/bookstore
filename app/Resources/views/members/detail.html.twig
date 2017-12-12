@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    Detail membre
+{% endblock %}
+
+{% block body %}
+
+<br/>
+
+<table class="table">
+    <thead>
+        <th>Photo</th>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th></th>
+    </thead>
+    <tbody>
+            <tr>
+                <td><img src="{{ asset(member.photo) }}"/></td>
+                <td>{{ member.prenom }}</td>
+                <td>{{ member.nom }}</td>
+                <td>{{ member.email }}</td>
+            </tr>
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

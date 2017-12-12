@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    Créer un contact
+{% endblock %}
+
+{% block body %}
+    {#
+        formulaire
+            form_start : <form>
+            form_end : </form>
+            form_label : <label>
+            form_widget : champ
+            nécessaire de créer le bouton submit
+    #}
+    <div class="row">
+        <div class="col col-md-4">
+            <h1>Contact</h1>
+
+            {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+
+            {{ form_label(form.firstname, 'Prénom') }}
+            {{ form_widget(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+
+            {{ form_label(form.lastname, 'Nom') }}
+            {{ form_widget(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+
+            {{ form_label(form.email, 'Email') }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+
+            {{ form_label(form.message, 'Message') }}
+            {{ form_widget(form.message) }}
+            {{ form_errors(form.message) }}
+
+            {{ form_label(form.hobbies, 'Loisirs') }}
+            {{ form_widget(form.hobbies) }}
+            {{ form_errors(form.hobbies) }}
+
+            {{ form_label(form.operating_system, 'Système d\'exploitation') }}
+            {{ form_widget(form.operating_system) }}
+            {{ form_errors(form.operating_system) }}
+            <br>
+                <input type="submit" class="btn btn-primary"/>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+    {#<tr>
+        <td>{{ form_label(form.firstname, 'Prénom : ') }}</td>
+        <td>{{ form_widget(form.firstname) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.lastname, 'Nom : ') }}</td>
+        <td>{{ form_widget(form.lastname) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.email, 'Email : ') }}</td>
+        <td>{{ form_widget(form.email) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.message, 'Message : ') }}</td>
+        <td>{{ form_widget(form.message) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" class="btn-primary"/></td>
+    </tr>#}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

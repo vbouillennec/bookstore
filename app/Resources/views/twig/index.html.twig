@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<p> Nous sommes le {{ now|date('d/m/Y') }} </p>
+
+{% set lenght = list|length %}   
+
+<p>Il y a {{ lenght }} éléments</p>
+
+{% for value in list %}
+    {{ value | }}
+    <br>
+{% endfor %}
+
+<img src="{{ asset('img/batwink-loop.gif') }}" alt=""/>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

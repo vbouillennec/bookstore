@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    Liste des contacts
+{% endblock %}
+
+{% block body %}
+    <p><a href="{{ url('contact.form') }}" class="btn btn-info">Ajouter contact</a></p>
+    <br/>
+    {% for value in app.flashes('notice') %}
+        <div class="alert alert-success" role="alert">{{ value }}</div>
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Loisirs</th>
+            <th>Système d'exploitation</th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.lastname }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.message }}</td>
+                <td>{# hobby est un array #}
+                    {% for hobby in contact.hobbies %}
+                        {{ hobby.name }}&nbsp;
+                    {% endfor %}
+                </td>
+                <td>{# one to many renvoie un objet #}
+                    {% if contact.operatingSystem.name is defined %}
+                        {{ contact.operatingSystem.name }}
+                    {% endif %}
+                </td>
+                <td><a href="{{ url('contact.update', {'id' : contact.id })}}" class="btn btn-warning">Modifier</a></td>
+                <td><a href="{{ url('contact.delete', {'id' : contact.id })}}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

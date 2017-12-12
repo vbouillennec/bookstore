@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    {{ course.name }}
+{% endblock %}
+
+{% block body %}
+    <h2>Liste des modules pour cette formation</h2>
+    {#<p><a href="{{ url('courses.form') }}" class="btn btn-info">Ajouter contact</a></p>
+    <br/>
+    {% for value in app.flashes('notice') %}
+        <div class="alert alert-success" role="alert">{{ value }}</div>
+    {% endfor %}#}
+    {#<table class="table">
+        <thead>
+            <th>Nom du module</th>
+        </thead>
+        <tbody>
+        {% for module in course.modules %}
+            <tr>
+                <td><a class="list-group-item" href="{{ url('course', {'name' : module.name}) }}">{{ module.name | capitalize }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>#}
+    <div class="list-group">
+        {% for module in course.modules %}
+            <a class="list-group-item" href="{{ url('module', {'name' : module.name}) }}">{{ module.name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
